@@ -8,9 +8,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -28,18 +30,33 @@ public class formulario extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+        protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
             String b=request.getParameter("ba");
             String a=request.getParameter("al");
             model.Problema c=new model.Problema(b,a);
             c.sacarArea();
+            Cookie ck=new Cookie("ba",c.getBa()+"");
+            response.addCookie(ck);
+            ck=new Cookie("al",c.getAl()+"");
+            response.addCookie(ck);
+            ck=new Cookie("problema",c.getResultado()+"");
+            response.addCookie(ck);
             int resultado=c.getResultado();
             request.setAttribute("areaResuelta",c);
             request.getRequestDispatcher("/muestraResultado.jsp").forward(request, response);
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet formulario</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet formulario at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 

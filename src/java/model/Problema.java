@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package model;
-
 /**
  *
  * @author User
@@ -13,10 +12,16 @@ public class Problema {
     private int ba;
     private int al;
     private int resultado;
-
+    private String Nombre;
     public Problema(String a, String b) {
         this.setBa(Integer.parseInt(a));
         this.setAl(Integer.parseInt(b));
+    }
+    public String getNombre() {
+        return Nombre;
+    }
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
     }
     public void sacarArea() {
         int c = this.getBa() * this.getAl() / 2;
@@ -40,5 +45,4 @@ public class Problema {
     public void setResultado(int resultado) {
         this.resultado = resultado;
     }
-
 }

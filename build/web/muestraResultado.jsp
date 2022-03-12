@@ -1,11 +1,11 @@
 <%-- 
-    Document   : muestraResultado
     Created on : 17 feb 2022, 16:56:26
     Author     : User
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="model.Problema"%>
+<%@page import="model.Problema"%>    
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,13 +14,17 @@
     </head>
     <body>
         <%
-            Problema c =(Problema) request.getAttribute("areaResuleta");
+            Problema c =(Problema) request.getAttribute("areaResuelta");
         %>
-        <h1>El resultado del area del triangulo con base</h1>
+        <h1>Hola</h1>
+        <%=c.getNombre()%>
+        <h1>El resultado del area del triangulo</h1>
+        <h1>Con base en</h1>
         <%=c.getBa()%>
-        <h1>Y altura en:</h1>
+        <h1>Y altura en</h1>
         <%=c.getAl()%>
-        <h1>es:</h1>
+        <h1>es de:</h1>
         <%=c.getResultado()%>
+        <a href="index.jsp">    Hacer otra operacion</a>
     </body>
 </html>
